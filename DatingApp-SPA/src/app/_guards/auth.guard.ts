@@ -6,7 +6,6 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from '../_servives/auth.service';
 import { AlertifyService } from '../_servives/alertify.service';
 
@@ -20,7 +19,7 @@ export class AuthGuard implements CanActivate {
     private alertify: AlertifyService
   ) {}
   canActivate(): boolean {
-    if(this.authService.loggedIn()){
+    if (this.authService.loggedIn()){
       return true;
     }
 

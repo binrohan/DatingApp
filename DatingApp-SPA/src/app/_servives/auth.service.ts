@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   baseUrl = environment.apiUrl + 'auth/';
   jwtHelper = new JwtHelperService();
-  decodedItem: any;
+  decodedToken: any;
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +20,8 @@ export class AuthService {
         const user = response;
         if (user) {
           localStorage.setItem('token', user.token);
-          this.decodedItem = this.jwtHelper.decodeToken(user.token);
-          console.log(this.decodedItem);
+          this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          console.log(this.decodedToken);
         }
       })
     );

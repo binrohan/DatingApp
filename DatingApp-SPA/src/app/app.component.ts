@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (token){
-      this.authService.decodedItem = this.jwtHelper.decodeToken(token);
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
   }
 }
