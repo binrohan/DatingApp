@@ -29,6 +29,9 @@ import { from } from 'rxjs';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { AuthGuard } from './_guards/auth.guard';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+// import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+// import { FileUploadModule } from 'ng2-file-upload';
 
 
 export function tokenGetter() {
@@ -53,7 +56,9 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      MessagesComponent
+      MessagesComponent,
+      PhotoEditorComponent,
+      // FileUploadModule
    ],
    imports: [
       BrowserModule,
