@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <img src="{{user.photoUrl}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
+                <img src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
                 <div class="card-body">
                     <div>
                         <strong>Location:</strong>
@@ -36,7 +36,7 @@
                         <h4>Description</h4>
                         <p>{{user.introduction}}</p>
                         <h4>Looking For</h4>
-                        <p>{{user.lookingFor}}</p>
+                        <p>{{user.lookingFor || 'hello'}}</p>
                     </tab>
                     <tab heading="Interests">
                         <h4>Interests</h4>
