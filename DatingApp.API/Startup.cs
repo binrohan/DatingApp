@@ -44,11 +44,6 @@ namespace DatingApp.API
                 o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             
-            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest)
-            // .AddJsonOptions(opt => {
-            //     opt.SerializationSettings.ReferenceLoopHandling = 
-            //         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            // });
 
             services.AddControllers();
             services.AddCors();
@@ -67,6 +62,7 @@ namespace DatingApp.API
                 };
             });
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
+            services.AddScoped<logUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

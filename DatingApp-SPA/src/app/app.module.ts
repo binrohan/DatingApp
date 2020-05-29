@@ -34,6 +34,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+// import { TimeAgoPipe } from 'time-ago-pipe/time-ago.pipe';
 // import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 // import { FileUploadModule } from 'ng2-file-upload';
 
@@ -62,6 +63,7 @@ export function tokenGetter() {
       MemberEditComponent,
       MessagesComponent,
       PhotoEditorComponent,
+      // TimeAgoPipe,
       // FileUploadModule
    ],
    imports: [
