@@ -37,6 +37,8 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 // import { TimeAgoPipe } from 'time-ago-pipe/time-ago.pipe';
 // import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 // import { FileUploadModule } from 'ng2-file-upload';
@@ -64,6 +66,7 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
+      MemberMessagesComponent,
       MessagesComponent,
       PhotoEditorComponent,
       // TimeAgoPipe,
@@ -98,7 +101,8 @@ export function tokenGetter() {
       MemberEditResolver,
       PreventUnsavedChanges,
       AuthGuard,
-      ListsResolver
+      ListsResolver,
+      MessagesResolver
       // { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
    ],
    bootstrap: [
