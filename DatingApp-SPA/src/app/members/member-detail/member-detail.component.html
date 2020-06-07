@@ -54,7 +54,29 @@
               <h4>Interests</h4>
               <p>{{ user.interests }}</p>
             </tab>
-            <tab heading="Photos"> </tab>
+            <tab heading="Photos">
+              <div class="w3container">
+                <div class="mySlides">
+                  <img src="{{ user.photos[currentSlideIndex].url }}" style="width: 100%;" />
+                </div>
+
+                <a class="prev" (click) = "pushSlide(-1)">❮</a>
+                <a class="next" (click) = "pushSlide(1)">❯</a>
+
+                <div class="row">
+                  <div class="column" *ngFor="let photo of user.photos; let i = index">
+                    <img
+                      class="demo cursor"
+                      src="{{ photo.url }}"
+                      style="width: 100%;"
+                      [ngClass]="{ active: currentSlideIndex === i }"
+                      alt="{{ photo.description }}"
+                      (click)="currentSlide(i)"
+                    />
+                  </div>
+                </div>
+              </div>
+            </tab>
             <tab heading="Messages">
               Messages will go here
               <app-member-messages
