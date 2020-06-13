@@ -12,6 +12,7 @@ import { AuthService } from './_servives/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_servives/error.interceptor';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -19,6 +20,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ModalModule } from 'ngx-bootstrap/modal';
 // import { NgxGalleryModule } from 'ngx-gallery';
 
 
@@ -39,6 +41,11 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { HasRoleDirective } from './_directives/hasRole.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { AdminService } from './_servives/admin.service';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 // import { TimeAgoPipe } from 'time-ago-pipe/time-ago.pipe';
 // import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 // import { FileUploadModule } from 'ng2-file-upload';
@@ -69,6 +76,11 @@ export function tokenGetter() {
       MemberMessagesComponent,
       MessagesComponent,
       PhotoEditorComponent,
+      AdminPanelComponent,
+      UserManagementComponent,
+      PhotoManagementComponent,
+      RolesModalComponent,
+      HasRoleDirective
       // TimeAgoPipe,
       // FileUploadModule
    ],
@@ -84,6 +96,7 @@ export function tokenGetter() {
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
+      ModalModule.forRoot(),
       // NgxGalleryModule,
       JwtModule.forRoot({
          config: {
@@ -102,8 +115,12 @@ export function tokenGetter() {
       PreventUnsavedChanges,
       AuthGuard,
       ListsResolver,
-      MessagesResolver
+      MessagesResolver,
+      AdminService
       // { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
+   ],
+   entryComponents: [
+      RolesModalComponent
    ],
    bootstrap: [
       AppComponent

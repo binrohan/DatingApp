@@ -7,31 +7,40 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-
   model: any = {};
   username: any;
   photoUrl: string;
 
-  constructor(public authService: AuthService, private aleritify: AlertifyService, private router: Router) { }
+  constructor(
+    public authService: AuthService,
+    private aleritify: AlertifyService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    this.authService.currentPhotoUrl.subscribe(
+      (photoUrl) => (this.photoUrl = photoUrl)
+    );
   }
 
-  login(){
-    this.authService.login(this.model).subscribe(next => {
-    this.aleritify.success('Logged in successfully');
-    }, error => {
-      this.aleritify.error(error);
-    }, () => {
-      this.router.navigate(['/members']);
-    });
+  login() {
+    this.authService.login(this.model).subscribe(
+      (next) => {
+        this.aleritify.success('Logged in successfully');
+      },
+      err => {
+        this.aleritify.error(err);
+      },
+      () => {
+        this.router.navigate(['/members']);
+      }
+    );
   }
 
-  loggedIn(){
+  loggedIn() {
     return this.authService.loggedIn();
   }
 

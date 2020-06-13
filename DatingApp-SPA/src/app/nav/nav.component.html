@@ -1,20 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">Dating App</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" [routerLink]="['/home']">DatingApp</a>
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/members']">Mathces </a>
+        <a class="nav-link" [routerLink]="['/members']">Matches</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/lists']">Lists</a>
@@ -22,21 +11,31 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/messages']">Messages</a>
       </li>
+      <li
+        *appHasRole="['Admin', 'Moderator']"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+      </li>
     </ul>
+
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
       <span class="mr-1">
-        <img src="{{photoUrl || '../../../assets/user.png'}}" alt="">
+        <img src="{{ photoUrl || '../../assets/user.png' }}" alt="" />
       </span>
       <a class="dropdown-toggle text-light" dropdownToggle>
         Welcome {{ authService.decodedToken?.unique_name | titlecase }}
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item"[routerLink] ="['/member/edit']">
-          <i class="fa fa-user"></i>Edit Profile</a
+        <a class="dropdown-item" [routerLink]="['/member/edit']"
+          ><i class="fa fa-user"></i> Edit Profile</a
         >
         <div class="dropdown-item"></div>
-        <a class="dropdown-item" href="#" (click) = "logout()"><i class="fa fa-logout"></i>Logout</a>
+        <a class="dropdown-item" (click)="logout()"
+          ><i class="fa fa-sign-out"></i> Logout</a
+        >
       </div>
     </div>
 
@@ -50,16 +49,16 @@
         class="form-control mr-sm-2"
         type="text"
         placeholder="Username"
-        required
         name="username"
+        required
         [(ngModel)]="model.username"
       />
       <input
         class="form-control mr-sm-2"
-        type="text"
+        type="password"
         placeholder="Password"
-        required
         name="password"
+        required
         [(ngModel)]="model.password"
       />
       <button
